@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Заказать сайт или логотип</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .order-container {
+      max-width: 600px;
+      margin: 80px auto;
+      padding: 30px;
+      background: rgba(30, 30, 35, 0.7);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+    .order-container h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #0ff;
+    }
+
+    /* Переключатель типа заказа */
+    .order-type-selector {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+      justify-content: center;
+    }
+    .order-type-btn {
+      padding: 12px 24px;
+      background: rgba(30, 30, 35, 0.7);
+      color: #fff;
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .order-type-btn:hover,
+    .order-type-btn.active {
+      background: rgba(0, 255, 255, 0.2);
+      color: #0ff;
+      border-color: #0ff;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(30, 30, 35, 0.7);
+      color: #fff;
+      border-radius: 10px;
+      font-size: 16px;
+      backdrop-filter: blur(8px);
+    }
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    .btn-submit {
+      background: #0ff;
+      color: #000;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1.1rem;
+      transition: background 0.3s;
+    }
+    .btn-submit:hover {
+      background: #00ccff;
+    }
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #0f0;
+      color: #000;
+      padding: 15px 25px;
+      border-radius: 10px;
+      font-weight: bold;
+      display: none;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,255,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✨ ЗВЁЗДЫ — копия из index.html -->
+  <div class="stars-container">
+    <div class="star" style="top: 10%; left: 20%; animation-delay: 0s;"></div>
+    <div class="star" style="top: 30%; left: 80%; animation-delay: 2s;"></div>
+    <div class="star" style="top: 70%; left: 15%; animation-delay: 4s;"></div>
+    <div class="star" style="top: 50%; left: 60%; animation-delay: 1s;"></div>
+    <div class="star" style="top: 90%; left: 40%; animation-delay: 3s;"></div>
+    <div class="star" style="top: 20%; left: 5%; animation-delay: 5s;"></div>
+    <div class="star" style="top: 80%; left: 95%; animation-delay: 6s;"></div>
+    <div class="star" style="top: 40%; left: 30%; animation-delay: 7s;"></div>
+    <div class="star" style="top: 60%; left: 70%; animation-delay: 8s;"></div>
+    <div class="star" style="top: 15%; left: 50%; animation-delay: 9s;"></div>
+    <div class="star" style="top: 85%; left: 25%; animation-delay: 10s;"></div>
+    <div class="star" style="top: 5%; left: 75%; animation-delay: 11s;"></div>
+    <div class="star" style="top: 95%; left: 55%; animation-delay: 12s;"></div>
+    <div class="star" style="top: 25%; left: 45%; animation-delay: 13s;"></div>
+    <div class="star" style="top: 75%; left: 85%; animation-delay: 14s;"></div>
+    <div class="star" style="top: 35%; left: 10%; animation-delay: 15s;"></div>
+    <div class="star" style="top: 65%; left: 90%; animation-delay: 16s;"></div>
+    <div class="star" style="top: 45%; left: 55%; animation-delay: 17s;"></div>
+    <div class="star" style="top: 55%; left: 20%; animation-delay: 18s;"></div>
+    <div class="star" style="top: 10%; left: 65%; animation-delay: 19s;"></div>
+    <div class="star" style="top: 80%; left: 35%; animation-delay: 20s;"></div>
+    <div class="star" style="top: 30%; left: 50%; animation-delay: 21s;"></div>
+    <div class="star" style="top: 70%; left: 75%; animation-delay: 22s;"></div>
+    <div class="star" style="top: 40%; left: 85%; animation-delay: 23s;"></div>
+    <div class="star" style="top: 60%; left: 15%; animation-delay: 24s;"></div>
+    <div class="star" style="top: 90%; left: 50%; animation-delay: 25s;"></div>
+    <div class="star" style="top: 20%; left: 60%; animation-delay: 26s;"></div>
+    <div class="star" style="top: 50%; left: 25%; animation-delay: 27s;"></div>
+    <div class="star" style="top: 85%; left: 40%; animation-delay: 28s;"></div>
+    <div class="star" style="top: 15%; left: 80%; animation-delay: 29s;"></div>
+    <div class="star" style="top: 75%; left: 5%; animation-delay: 30s;"></div>
+    <div class="star" style="top: 35%; left: 95%; animation-delay: 31s;"></div>
+    <div class="star" style="top: 65%; left: 30%; animation-delay: 32s;"></div>
+    <div class="star" style="top: 55%; left: 70%; animation-delay: 33s;"></div>
+    <div class="star" style="top: 25%; left: 55%; animation-delay: 34s;"></div>
+    <div class="star" style="top: 95%; left: 20%; animation-delay: 35s;"></div>
+    <div class="star" style="top: 45%; left: 80%; animation-delay: 36s;"></div>
+    <div class="star" style="top: 5%; left: 35%; animation-delay: 37s;"></div>
+    <div class="star" style="top: 80%; left: 65%; animation-delay: 38s;"></div>
+    <div class="star" style="top: 10%; left: 90%; animation-delay: 39s;"></div>
+    <div class="star" style="top: 70%; left: 45%; animation-delay: 40s;"></div>
+    <div class="star" style="top: 30%; left: 25%; animation-delay: 41s;"></div>
+    <div class="star" style="top: 60%; left: 85%; animation-delay: 42s;"></div>
+    <div class="star" style="top: 40%; left: 50%; animation-delay: 43s;"></div>
+    <div class="star" style="top: 90%; left: 70%; animation-delay: 44s;"></div>
+    <div class="star" style="top: 20%; left: 10%; animation-delay: 45s;"></div>
+    <div class="star" style="top: 50%; left: 95%; animation-delay: 46s;"></div>
+    <div class="star" style="top: 85%; left: 60%; animation-delay: 47s;"></div>
+    <div class="star" style="top: 15%; left: 30%; animation-delay: 48s;"></div>
+    <div class="star" style="top: 75%; left: 20%; animation-delay: 49s;"></div>
+  </div>
+
+
+  <!-- Шапка -->
+  <header class="header">
+    <div class="container">
+      <a href="./" class="logo">
+        <img src="images/logo.png" alt="Логотип">
+      </a>
+      <nav class="nav">
+        <ul>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#team">Команда</a></li>
+          <li><a href="#benefits">Услуги</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Выбор типа заказа -->
+  <div class="order-container">
+    <h1>Что хотите заказать?</h1>
+    <div class="order-type-selector">
+      <a href="#site-form" class="order-type-btn active">Сайт</a>
+      <a href="#logo-form" class="order-type-btn">Логотип</a>
+    </div>
+
+    <!-- Форма для сайта -->
+    <div id="site-form">
+      <h2 style="text-align:center; margin-bottom:20px;">Заказать сайт</h2>
+      <form id="siteOrderForm">
+        <div class="form-group">
+          <label for="name-site">Ваше имя *</label>
+          <input type="text" id="name-site" name="from_name" required>
+        </div>
+        <div class="form-group">
+          <label for="email-site">Email *</label>
+          <input type="email" id="email-site" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone-site">Телефон (опционально)</label>
+          <input type="tel" id="phone-site" name="phone">
+        </div>
+        <div class="form-group">
+          <label for="budget-site">Бюджет (руб.)</label>
+          <select id="budget-site" name="budget">
+            <option value="">— Выберите —</option>
+            <option value="до 50 000">до 50 000 ₽</option>
+            <option value="50 000 – 100 000">50 000 – 100 000 ₽</option>
+            <option value="100 000 – 200 000">100 000 – 200 000 ₽</option>
+            <option value="более 200 000">более 200 000 ₽</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="project-site">Описание проекта *</label>
+          <textarea id="project-site" name="message" placeholder="Какой сайт вам нужен? Сроки? Особенности?" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Создать сайт</button>
+      </form>
+    </div>
+
+    <!-- Форма для логотипа -->
+    <div id="logo-form" style="display:none; margin-top:40px;">
+      <h2 style="text-align:center; margin-bottom:20px;">Заказать логотип</h2>
+      <form id="logoOrderForm">
+        <div class="form-group">
+          <label for="name-logo">Ваше имя *</label>
+          <input type="text" id="name-logo" name="from_name" required>
+        </div>
+        <div class="form-group">
+          <label for="email-logo">Email *</label>
+          <input type="email" id="email-logo" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="brand-name">Название бренда *</label>
+          <input type="text" id="brand-name" name="brand" placeholder="Например: NovaTech" required>
+        </div>
+        <div class="form-group">
+          <label for="logo-desc">Пожелания по стилю (опционально)</label>
+          <textarea id="logo-desc" name="message" placeholder="Минимализм, геометрия, tech-стиль и т.д."></textarea>
+        </div>
+        <div style="text-align:center; margin:15px 0; color:#0ff; font-weight:bold;">Стоимость: 10 000 ₽</div>
+        <button type="submit" class="btn-submit">Заказать логотип</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Уведомление -->
+  <div class="notification" id="notification">Заявка отправлена! Скоро наш специалист свяжется с вами.</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init({ publicKey: "pUr8-iz8NkGOYbpiU" });
+
+    // Переключение между формами (без перезагрузки)
+    document.querySelectorAll('.order-type-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('.order-type-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+
+        const target = this.textContent.trim() === 'Сайт' ? 'site' : 'logo';
+        document.getElementById('site-form').style.display = target === 'site' ? 'block' : 'none';
+        document.getElementById('logo-form').style.display = target === 'logo' ? 'block' : 'none';
+      });
+    });
+
+    // Отправка форм
+    function setupForm(formId, templateId) {
+      document.getElementById(formId).addEventListener('submit', function(e) {
+        e.preventDefault();
+        emailjs.sendForm('service_iiz1xqc', templateId, this)
+          .then(() => {
+            document.getElementById('notification').style.display = 'block';
+            setTimeout(() => document.getElementById('notification').style.display = 'none', 5000);
+            this.reset();
+          })
+          .catch(err => {
+            console.error('Ошибка:', err);
+            alert('Не удалось отправить заявку. Попробуйте позже.');
+          });
+      });
+    }
+
+    setupForm('siteOrderForm', 'website_request');
+    setupForm('logoOrderForm', 'logo_request'); // ← убедись, что в EmailJS есть шаблон logo_request
+  </script>
+
+</body>
+</html>
